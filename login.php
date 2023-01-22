@@ -1,13 +1,13 @@
 <?php 
     session_start();
-    include "../config.php";
+    include "config.php";
     if(isset($_POST['submit'])){
-        $sql = mysqli_query($koneksi, "SELECT * FROM admin WHERE username = '$_POST[username]' && password = '$_POST[password]'");
+        $sql = mysqli_query($conn, "SELECT * FROM user WHERE username = '$_POST[username]' && password = '$_POST[password]'");
 
         $cek = mysqli_num_rows($sql);
         if($cek > 0){
             $_SESSION['username'] = $_POST['username'];
-            header("location: ../index.php");
+            header("location: index.php");
         }else{
             echo '<script>alert("Username atau password anda salah!")</script>';
         }
@@ -22,13 +22,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/login.css">
     <title>Login</title>
 </head>
 <body>
-    <!-- <div class="alert alert-warning" role="alert">
-        <?php //echo $_SESSION['error'] ?>
-    </div> -->
     <div class="container">
         <div class="login">
             <form action="" method="post">
@@ -46,7 +43,7 @@
             </form>
         </div>
         <div class="right">
-            <img src="../assets/img/library.jpg" alt="gambar (〜￣▽￣)〜">
+            <img src="assets/img/library.jpg" alt="gambar (〜￣▽￣)〜">
          </div>
     </div>
 </body>

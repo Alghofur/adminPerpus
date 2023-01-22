@@ -1,8 +1,9 @@
 <?php 
-  session_start();
-  include "session.php";
-  include "config.php";
+  include "../../config.php";
+  $ambilAnggota = $koneksi->query("SELECT * FROM anggota ORDER BY id_anggota DESC") or die(mysqli_error($koneksi));
+  //$ambilAnggota = $conn->query("SELECT * FROM tb_anggota ORDER BY id_anggota DESC") or die(mysqli_error($conn));
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,29 +12,29 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard</title>
+  <title>Data Siswa</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
-  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="../assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.5.0
@@ -50,7 +51,7 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets/img/letter-z.png" alt="¯\_( ͡° ͜ʖ ͡°)_/¯">
+        <img src="../assets/img/letter-z.png" alt="">
         <span class="d-none d-lg-block">Admin Perpus</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -147,10 +148,12 @@
 
         </li><!-- End Notification Nav -->
 
+        
+
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <img src="../assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">Alghofur</span>
           </a><!-- End Profile Iamge Icon -->
 
@@ -211,143 +214,141 @@
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
 
-    <ul class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav" id="sidebar-nav">
 
-      <li class="nav-item">
-        <a class="nav-link" href="index.php">
-          <i class="bi bi-grid"></i>
-          <span>Dashboard</span>
-        </a>
-      </li><!-- End Dashboard Nav -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="../index.php">
+        <i class="bi bi-grid"></i>
+        <span>Dashboard</span>
+      </a>
+    </li><!-- End Dashboard Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Data Master</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="page/buku/buku.php">
-              <i class="bi bi-circle"></i><span>Buku</span>
-            </a>
-          </li>
-          <li>
-            <a href="page/anggota/anggota.php">
-              <i class="bi bi-circle"></i><span>Siswa</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Data Master Nav -->
+    <li class="nav-item">
+      <a class="nav-link" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-menu-button-wide"></i><span>Data Master</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+          <a href="data_buku.php">
+            <i class="bi bi-circle"></i><span>Buku</span>
+          </a>
+        </li>
+        <li>
+          <a href="data_penulis.php">
+            <i class="bi bi-circle"></i><span>Penulis</span>
+          </a>
+        </li>
+        <li>
+          <a href="data_penerbit.php">
+            <i class="bi bi-circle"></i><span>Penerbit</span>
+          </a>
+        </li>
+        <li>
+          <a href="data_kategori.php" >
+            <i class="bi bi-circle"></i><span>Kategori</span>
+          </a>
+        </li>
+        <li>
+          <a href="anggota.php" class="active">
+            <i class="bi bi-circle"></i><span>Siswa</span>
+          </a>
+        </li>
+      </ul>
+    </li><!-- End Data Master Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-journal-text"></i><span>Sirkulasi</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="peminjaman.php">
-              <i class="bi bi-circle"></i><span>Peminjaman</span>
-            </a>
-          </li>
-          <li>
-            <a href="pengadaan.php">
-              <i class="bi bi-circle"></i><span>Pengadaan</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Sirkulasi Nav -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-journal-text"></i><span>Sirkulasi</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+          <a href="peminjaman.php">
+            <i class="bi bi-circle"></i><span>Peminjaman</span>
+          </a>
+        </li>
+        <li>
+          <a href="pengadaan.php">
+            <i class="bi bi-circle"></i><span>Pengadaan</span>
+          </a>
+        </li>
+      </ul>
+    </li><!-- End Sirkulasi Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="data_admin.php">
-          <i class="bi bi-person-vcard-fill"></i>
-          <span>Admin</span>
-        </a>
-      </li><!-- End Admin Page Nav -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="data_admin.php">
+      <i class="bi bi-person-vcard-fill"></i>
+      <span>Admin</span>
+    </a>
+  </li><!-- End Admin Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="logout.php">
-          <i class="bi bi-box-arrow-right"></i>
-          <span>Logout</span>
-        </a>
-      </li><!-- End Admin Page Nav -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="../logout.php">
+      <i class="bi bi-box-arrow-right"></i>
+      <span>Logout</span>
+    </a>
+  </li><!-- End Admin Page Nav -->
 
-    </ul>
+</ul>
 
-  </aside><!-- End Sidebar-->
+</aside><!-- End Sidebar-->
 
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Dashboard</h1>
+      <h1>Data Master</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-          <li class="breadcrumb-item active">Dashboard</li>
+          <li class="breadcrumb-item"><a href="../index.php">Home</a></li>
+          <li class="breadcrumb-item">Data Master</li>
+          <li class="breadcrumb-item active">Siswa</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
-
-    <?php 
-      //ambil data buku
-      $data_buku = mysqli_query($conn,"SELECT * FROM buku");
-      //hitung jumlah buku
-      // $jumlah_perbuku = mysqli_num_rows($data_buku);
-
-      $total_buku = 0;
-      while($tampil = $data_buku->fetch_array()){
-        $total_buku += $tampil['jumlah_buku'];
-      }
-    ?>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 mt-2">
-                <div class="jumbotron jumbotron-fluid">
-                    <div class="container">
-                        <h1 class="display-4">Selamat Datang Cuy</h1>
-                        <p class="lead">Ini adalah Web Admin Perpus.</p>
-                    </div>
-                </div>
-            </div>
+    <div class="card mb-4">
+        <div class="card-header">
+          <i class="fas fa-table mr-1"></i>
+          Data Siswa
         </div>
-        <div class="row">
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Peminjaman</h5>
-                        <p class="card-text">Jumlah Transaksi Peminjaman</p>
-                        <p class="card-text"><a href="#" class="btn btn-primary">Peminjaman</a></p>
-                    </div>
-                </div><!-- End Card with titles, buttons, and links -->
-            </div>
-            <div class="col">
-            <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Pengembalian</h5>
-                        <p class="card-text">Jumlah Transaksi Pengembalian</p>
-                        <p class="card-text"><a href="#" class="btn btn-primary">Pengembalian</a></p>
-                    </div>
-                </div><!-- End Card with titles, buttons, and links -->
-            </div>
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Data Buku</h5>
-                        <p class="card-text">Jumlah Buku Yang Tersedia <?php echo $total_buku; ?> Buku</p>
-                        <p class="card-text"><a href="#" class="btn btn-primary">Data Buku</a></p>
-                    </div>
-                </div><!-- End Card with titles, buttons, and links -->
-            </div>
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Data Siswa</h5>
-                        <p class="card-text">Jumlah Siswa Yang Ada ... Siswa</p>
-                        <p class="card-text"><a href="#" class="btn btn-primary">Data Siswa</a></p>
-                    </div>
-                </div><!-- End Card with titles, buttons, and links -->
-            </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width = "100%" cellspacing = "0">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Nama</th>
+                  <th>Tempat Lahir</th>
+                  <th>Tanggal Lahir</th>
+                  <th>Jenis Kelamin</th>
+                  <th>Program Studi</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php 
+                  $no1;
+                  while ($pecahAnggota = $ambilAnggota -> fetch_assoc()){
+                    $jk = ($pecahAnggota['jk'] =='L') ? 'Laki-Laki' : 'Perempuan';
+                  
+                ?>
+                <tr>
+                  <td><? $no++; ?></td>
+                  <td><? $pecahAnggota['nama_anggota']; ?></td>
+                  <td><? $pecahAnggota['tempat_lahir']; ?></td>
+                  <td><? $pecahAnggota['tgl_lahir']; ?></td>
+                  <td><? $jk; ?></td>
+                  <td><? $pecahAnggota['prodi']; ?></td>
+                  <td>
+                    <a href="?p=anggota&aksi=ubah&id=<?= $pecahAnggota['id_anggota']?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
+                    <a href="?p=anggota&aksi=hapus&id=<?= $pecahAnggota['id_anggota']?>" class="btn btn-danger btn-sm"><i class="fa fa-trash" onclick="return confirm('Yakin ?')"></i></a>
+                  </td>
+                </tr>
+                <?php } ?>
+              </tbody>
+            </table>
+          </div>
         </div>
     </div>
+
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
@@ -367,17 +368,17 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/chart.js/chart.umd.js"></script>
-  <script src="assets/vendor/echarts/echarts.min.js"></script>
-  <script src="assets/vendor/quill/quill.min.js"></script>
-  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="../assets/vendor/echarts/echarts.min.js"></script>
+  <script src="../assets/vendor/quill/quill.min.js"></script>
+  <script src="../assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="../assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="../assets/js/main.js"></script>
 
 </body>
 
