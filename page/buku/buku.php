@@ -273,18 +273,18 @@
       <h1>Data Master</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="../index.php">Home</a></li>
+          <li class="breadcrumb-item"><a href="../../index.php">Home</a></li>
           <li class="breadcrumb-item">Data Master</li>
           <li class="breadcrumb-item active">Buku</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
     <div class="col-md-6">
-      <a href="tambah.php" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah Buku</a>
+      <a href="tambah.php" class="btn btn-primary mb-3"><i class="bi bi-plus"></i> Tambah Buku</a>
     </div>
     <div class="card mb-4">
         <div class="card-header">
-          <i class="fas fa-table mr-1"></i>
+          <i class="bi bi-table mr-1"></i>
           Data Buku
         </div>
         <div class="card-body">

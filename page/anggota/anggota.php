@@ -1,6 +1,5 @@
 <?php 
   include "../../config.php";
-  $ambilAnggota = $koneksi->query("SELECT * FROM anggota ORDER BY id_anggota DESC") or die(mysqli_error($koneksi));
   //$ambilAnggota = $conn->query("SELECT * FROM tb_anggota ORDER BY id_anggota DESC") or die(mysqli_error($conn));
 ?>
 
@@ -17,24 +16,24 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="../assets/img/favicon.png" rel="icon">
-  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="../../assets/img/favicon.png" rel="icon">
+  <link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="../assets/vendor/quill/quill.snow.css" rel="stylesheet">
-  <link href="../assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-  <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="../assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../../assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="../../assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="../../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../../assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../../assets/css/style.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.5.0
@@ -51,7 +50,7 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
-        <img src="../assets/img/letter-z.png" alt="">
+        <img src="../../assets/img/letter-z.png" alt="">
         <span class="d-none d-lg-block">Admin Perpus</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -153,7 +152,7 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="../assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <img src="../../assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">Alghofur</span>
           </a><!-- End Profile Iamge Icon -->
 
@@ -304,13 +303,16 @@
         </ol>
       </nav>
     </div><!-- End Page Title -->
+    <div class="col-md-6">
+      <a href="tambah.php" class="btn btn-primary mb-3"><i class="bi bi-plus"></i> Tambah Buku</a>
+    </div>
     <div class="card mb-4">
         <div class="card-header">
           <i class="fas fa-table mr-1"></i>
           Data Siswa
         </div>
         <div class="card-body">
-          <div class="table-responsive">
+          <div class="table-responsive mt-3">
             <table class="table table-bordered" id="dataTable" width = "100%" cellspacing = "0">
               <thead>
                 <tr>
@@ -323,27 +325,34 @@
                   <th>Aksi</th>
                 </tr>
               </thead>
-              <tbody>
-                <?php 
-                  $no1;
-                  while ($pecahAnggota = $ambilAnggota -> fetch_assoc()){
-                    $jk = ($pecahAnggota['jk'] =='L') ? 'Laki-Laki' : 'Perempuan';
+              <?php 
+                  $query = "SELECT * FROM anggota";
+                  $result = mysqli_query($conn, $query);
+                  $no= 1;
+
+                  while (
+                    $data = mysqli_fetch_assoc($result)
+                  ){
+                    $jk = ($data['jk'] =='L') ? 'Laki-Laki' : 'Perempuan';
+                    
                   
                 ?>
-                <tr>
-                  <td><? $no++; ?></td>
-                  <td><? $pecahAnggota['nama_anggota']; ?></td>
-                  <td><? $pecahAnggota['tempat_lahir']; ?></td>
-                  <td><? $pecahAnggota['tgl_lahir']; ?></td>
-                  <td><? $jk; ?></td>
-                  <td><? $pecahAnggota['prodi']; ?></td>
-                  <td>
-                    <a href="?p=anggota&aksi=ubah&id=<?= $pecahAnggota['id_anggota']?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
-                    <a href="?p=anggota&aksi=hapus&id=<?= $pecahAnggota['id_anggota']?>" class="btn btn-danger btn-sm"><i class="fa fa-trash" onclick="return confirm('Yakin ?')"></i></a>
-                  </td>
-                </tr>
+              <tbody>
+                  <tr>
+                      <td><?= $no++; ?></td>
+                      <td><?= $data['nim']; ?></td>
+                      <td><?= $data['nama_anggota']; ?></td>
+                      <td><?= $data['tempat_lahir']; ?></td>
+                      <td><?= $data['tgl_lahir']; ?></td>
+                      <td><?= $jk; ?></td>
+                      <td><?= $data['prodi']; ?></td>
+                      <td>
+                          <a href="ubah.php?id=<?= $data['id_anggota']; ?>" id="id" class="btn btn-info btn-sm"><i class="bi bi-pen"></i></a>
+                          <a href="hapus.php?id=<?= $data['id_anggota']; ?>" id="id" class="btn btn-danger btn-sm"><i class="bi bi-trash3-fill" onclick="return confirm('Yakin dek?')"></i></a>
+                      </td>
+                  </tr>
                 <?php } ?>
-              </tbody>
+                </tbody>
             </table>
           </div>
         </div>
@@ -368,17 +377,17 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="../assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/chart.js/chart.umd.js"></script>
-  <script src="../assets/vendor/echarts/echarts.min.js"></script>
-  <script src="../assets/vendor/quill/quill.min.js"></script>
-  <script src="../assets/vendor/simple-datatables/simple-datatables.js"></script>
-  <script src="../assets/vendor/tinymce/tinymce.min.js"></script>
-  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../../assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="../../assets/vendor/echarts/echarts.min.js"></script>
+  <script src="../../assets/vendor/quill/quill.min.js"></script>
+  <script src="../../assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="../../assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="../../assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="../assets/js/main.js"></script>
+  <script src="../../assets/js/main.js"></script>
 
 </body>
 
