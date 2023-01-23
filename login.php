@@ -33,9 +33,9 @@
                 <hr>
                 <p>Admin Perpus</p>
                  <label for="">Username</label>
-                 <input type="text" name="username" placeholder="username" id="username">
+                 <input type="text" name="username" placeholder="username" id="username" required>
                  <label for="">Password</label>
-                 <input type="password" placeholder="password" name="password" id="password">
+                 <input type="password" placeholder="password" name="password" id="password" required>
 
                  <button type="submit" name="submit">Login</button>
 

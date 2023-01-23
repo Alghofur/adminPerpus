@@ -294,7 +294,7 @@
       <h1>Data Master</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="../index.php">Home</a></li>
+          <li class="breadcrumb-item"><a href="../../index.php">Home</a></li>
           <li class="breadcrumb-item">Data Master</li>
           <li class="breadcrumb-item"><a href="buku.php">Buku</a></li>
           <li class="breadcrumb-item active">Tambah Buku</li>
@@ -309,7 +309,7 @@
             </div>
             <div class="form-grup">
                 <label for="pengarang_buku" class="small mb-1">Pengarang</label>
-                <input type="text" class="form-control" id="pengarang_buku" name="pengarang_buku" placeholder="Masukan judul buku">
+                <input type="text" class="form-control" id="pengarang_buku" name="pengarang_buku" placeholder="Masukan nama pengarang">
             </div>
             <div class="form-group">
                 <label for="penerbit_buku" class="small mb-1">Penerbit</label>
