@@ -43,11 +43,6 @@ if(isset($_POST['ubah'])) {
 }
 
 ?>
-
-<div class="card-header mb-5">
-	
-	
-</div>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,7 +50,7 @@ if(isset($_POST['ubah'])) {
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Tambah Buku</title>
+  <title>Edit Buku</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
