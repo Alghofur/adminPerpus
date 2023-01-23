@@ -35,12 +35,6 @@
   <!-- Template Main CSS File -->
   <link href="../../assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: NiceAdmin - v2.5.0
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -226,25 +220,10 @@
       <a class="nav-link" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
         <i class="bi bi-menu-button-wide"></i><span>Data Master</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
-      <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
         <li>
-          <a href="data_buku.php">
+          <a href="../buku/buku.php">
             <i class="bi bi-circle"></i><span>Buku</span>
-          </a>
-        </li>
-        <li>
-          <a href="data_penulis.php">
-            <i class="bi bi-circle"></i><span>Penulis</span>
-          </a>
-        </li>
-        <li>
-          <a href="data_penerbit.php">
-            <i class="bi bi-circle"></i><span>Penerbit</span>
-          </a>
-        </li>
-        <li>
-          <a href="data_kategori.php" >
-            <i class="bi bi-circle"></i><span>Kategori</span>
           </a>
         </li>
         <li>

@@ -224,7 +224,7 @@
         </li>
         
         <li>
-          <a href="../anggota.php" >
+          <a href="../anggota/anggota.php" >
             <i class="bi bi-circle"></i><span>Siswa</span>
           </a>
         </li>
