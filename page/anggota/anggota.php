@@ -210,7 +210,7 @@
   <ul class="sidebar-nav" id="sidebar-nav">
 
     <li class="nav-item">
-      <a class="nav-link collapsed" href="../index.php">
+      <a class="nav-link collapsed" href="../../index.php">
         <i class="bi bi-grid"></i>
         <span>Dashboard</span>
       </a>
@@ -240,7 +240,7 @@
       </a>
       <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-          <a href="peminjaman.php">
+          <a href="../sirkulasi/sirkulasi.php">
             <i class="bi bi-circle"></i><span>Peminjaman</span>
           </a>
         </li>
@@ -276,14 +276,14 @@
       <h1>Data Master</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="../index.php">Home</a></li>
+          <li class="breadcrumb-item"><a href="../../index.php">Home</a></li>
           <li class="breadcrumb-item">Data Master</li>
           <li class="breadcrumb-item active">Siswa</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
     <div class="col-md-6">
-      <a href="tambah.php" class="btn btn-primary mb-3"><i class="bi bi-plus"></i> Tambah Buku</a>
+      <a href="tambah.php" class="btn btn-primary mb-3"><i class="bi bi-plus"></i> Tambah Siswa</a>
     </div>
     <div class="card mb-4">
         <div class="card-header">

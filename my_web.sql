@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 19, 2023 at 01:03 AM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 8.0.8
+-- Generation Time: Jan 24, 2023 at 04:09 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `web_saya`
+-- Database: `my_web`
 --
 
 -- --------------------------------------------------------
@@ -35,7 +35,14 @@ CREATE TABLE `anggota` (
   `tgl_lahir` date NOT NULL,
   `jk` enum('L','P') NOT NULL,
   `prodi` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `anggota`
+--
+
+INSERT INTO `anggota` (`id_anggota`, `nim`, `nama_anggota`, `tempat_lahir`, `tgl_lahir`, `jk`, `prodi`) VALUES
+(1, 20009300, 'Alghofur', 'Jawa Tengah', '2004-02-20', 'L', 'Teknik Informatika');
 
 -- --------------------------------------------------------
 
@@ -45,14 +52,22 @@ CREATE TABLE `anggota` (
 
 CREATE TABLE `buku` (
   `id_buku` int(11) NOT NULL,
-  `isbn` varchar(100) NOT NULL,
   `judul_buku` varchar(100) NOT NULL,
-  `lokasi` enum('Rak1','Rak2','Rak3') NOT NULL,
-  `penerbit_buku` varchar(100) NOT NULL,
   `pengarang_buku` varchar(100) NOT NULL,
+  `penerbit_buku` varchar(100) NOT NULL,
   `tahun_terbit` varchar(100) NOT NULL,
+  `isbn` varchar(100) NOT NULL,
+  `jumlah_buku` int(11) NOT NULL,
+  `lokasi` enum('Rak1','Rak2','Rak3') NOT NULL,
   `tgl_input` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `buku`
+--
+
+INSERT INTO `buku` (`id_buku`, `judul_buku`, `pengarang_buku`, `penerbit_buku`, `tahun_terbit`, `isbn`, `jumlah_buku`, `lokasi`, `tgl_input`) VALUES
+(1, 'Dilan 1991', 'Pidi Baiq', 'Mizan Pustaka', '2014', '9786027870413', 5, '', '2023-01-23');
 
 -- --------------------------------------------------------
 
@@ -68,7 +83,7 @@ CREATE TABLE `transaksi` (
   `tgl_pinjam` varchar(50) NOT NULL,
   `tgl_kembali` varchar(50) NOT NULL,
   `status` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -80,7 +95,7 @@ CREATE TABLE `user` (
   `id_user` int(11) NOT NULL,
   `username` varchar(250) NOT NULL,
   `password` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `user`
@@ -92,6 +107,12 @@ INSERT INTO `user` (`id_user`, `username`, `password`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `anggota`
+--
+ALTER TABLE `anggota`
+  ADD PRIMARY KEY (`id_anggota`);
 
 --
 -- Indexes for table `buku`
@@ -116,10 +137,16 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `anggota`
+--
+ALTER TABLE `anggota`
+  MODIFY `id_anggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `transaksi`

@@ -29,6 +29,8 @@
   <link href="../../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="../../assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
+  <!-- datatable -->
+  <link rel="stylesheet" type="text/css" href="/assets/js/DataTables-1.13.1/datatables.min.js"/>
   <!-- Template Main CSS File -->
   <link href="../../assets/css/style.css" rel="stylesheet">
 </head>
@@ -235,9 +237,9 @@
       <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
         <i class="bi bi-journal-text"></i><span>Sirkulasi</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
-      <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
         <li>
-          <a href="peminjaman.php">
+          <a href="../sirkulasi/sirkulasi.php">
             <i class="bi bi-circle"></i><span>Peminjaman</span>
           </a>
         </li>
