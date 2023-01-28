@@ -35,12 +35,6 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: NiceAdmin - v2.5.0
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -150,7 +144,7 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <img src="assets/img/guar.jpg" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">Alghofur</span>
           </a><!-- End Profile Iamge Icon -->
 
@@ -244,15 +238,15 @@
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="peminjaman.php">
+            <a href="page/sirkulasi/sirkulasi.php">
               <i class="bi bi-circle"></i><span>Peminjaman</span>
             </a>
           </li>
-          <li>
+          <!-- <li>
             <a href="pengadaan.php">
               <i class="bi bi-circle"></i><span>Pengadaan</span>
             </a>
-          </li>
+          </li> -->
         </ul>
       </li><!-- End Sirkulasi Nav -->
 
@@ -289,13 +283,19 @@
     <?php 
       //ambil data buku
       $data_buku = mysqli_query($conn,"SELECT * FROM buku");
-      //hitung jumlah buku
+      //hitung jumlah buku tapi secara jumlah field
       // $jumlah_perbuku = mysqli_num_rows($data_buku);
 
+      //menghitung jumlah buku keseluruhan 
       $total_buku = 0;
       while($tampil = $data_buku->fetch_array()){
         $total_buku += $tampil['jumlah_buku'];
-      }
+      };
+
+      //ambil data siswa
+      $data_siswa = mysqli_query($conn,"SELECT * FROM anggota");
+      //menghitung jumlah field tabel anggota
+      $jumlah_anggota = mysqli_num_rows($data_siswa);
     ?>
 
     <div class="container">
@@ -341,7 +341,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Data Siswa</h5>
-                        <p class="card-text">Jumlah Siswa Yang Ada ... Siswa</p>
+                        <p class="card-text">Jumlah Siswa Yang Ada <?php echo $jumlah_anggota; ?> Siswa</p>
                         <p class="card-text"><a href="#" class="btn btn-primary">Data Siswa</a></p>
                     </div>
                 </div><!-- End Card with titles, buttons, and links -->

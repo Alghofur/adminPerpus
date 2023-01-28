@@ -307,8 +307,8 @@ include "../../config.php";
     <div class="card-header mb-5">
         <form action="" method="post">
             <div class="form-group">
-                <label class="small mb-1" for="nim">NIM</label>
-                <input class="form-control" id="nim" name="nim" type="number" placeholder="Masukan judul NIM"/>
+                <label class="small mb-1" for="nim">NIS</label>
+                <input class="form-control" id="nim" name="nim" type="number" placeholder="Masukan judul NIS"/>
             </div>
             <div class="form-group">
                 <label class="small mb-1" for="nama_anggota">Nama</label>
